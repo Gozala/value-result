@@ -1,0 +1,68 @@
+/* @flow */
+
+interface ResultInterface <x, a>
+  { map <b> (f:(value:a) => b):Result<x, b>
+  , chain <b> (then:(value:a) => Result<x, b>):Result<x, b>
+  , format <y> (f:(error:x) => y):Result<y, a>
+  , capture <y> (handle:(error:x) => Result<y, a>):Result<y, a>
+  , and <b> (result:Result<x, b>):Result<x, b>
+  , or <y> (result:Result<y, a>):Result<y, a>
+  , withDefault(fallback:a): a
+  }
+
+type Ok <error, value>
+  = ResultInterface<error, value>
+  & { type: "Ok"
+    , value: value
+    , isError: false
+    , isOk: true
+    }
+
+type Error <error, value>
+  = ResultInterface<error, value>
+  & { type: "Error"
+    , error: error
+    , isError: true
+    , isOk: false
+    }
+
+export type Result <error, value>
+  = Error <error, value>
+  | Ok <error, value>
+
+declare export function ok <x, a>
+  (value:a) :
+  Result<x, a>
+
+declare export function error <x, a>
+  (error: x) :
+  Result<x, a>
+
+
+declare export function withDefault <x, a>
+  (fallback:a, result:Result<x,a>) :
+  a
+
+declare export function map <x, a, b>
+  (f:(value:a) => b, result:Result<x,a>) :
+  Result<x, b>
+
+declare export function chain <x, a, b>
+  (result:Result<x, a>, then:(value:a) => Result<x, b>) :
+  Result<x, b>
+
+declare export function format <x, y, a>
+  (f:(error:x) => y, result:Result<x, a>) :
+  Result<y, a>
+
+declare export function capture <x, y, a>
+  (result:Result<x, a>, handle:(error:x) => Result<y, a>) :
+  Result<y, a>
+
+declare export function and <x, a, b>
+  (left:Result<x, a>, right:Result<x, b>) :
+  Result<x, b>
+
+declare export function or <x, y, a>
+  (left:Result<x, a>, right:Result<y, a>) :
+  Result<y, a>

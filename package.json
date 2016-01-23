@@ -1,0 +1,44 @@
+{
+  "name": "value-result",
+  "id": "value-result",
+  "version": "0.0.1",
+  "description": "Library for managing results of computation that may fail",
+  "keywords": [
+    "result",
+    "type",
+    "flow"
+  ],
+  "author": "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
+  "homepage": "https://github.com/Gozala/decoder",
+  "main": "./lib/result.js",
+  "devDependencies": {
+    "babel-cli": "6.4.5",
+    "babel-plugin-flow-comments": "6.3.19",
+    "babel-plugin-syntax-flow": "6.3.13",
+    "babel-plugin-transform-flow-comments": "6.4.0",
+    "babel-preset-es2015": "6.3.13",
+    "babel-register": "6.4.3",
+    "flow-bin": "0.20.1",
+    "tap": "5.1.1",
+    "tape": "4.4.0"
+  },
+  "scripts": {
+    "test": "npm run flow && npm run tape",
+    "tape": "tape -r babel-register test/**/*.js",
+    "flow": "flow check",
+    "start": "babel --watch --out-dir ./lib ./src",
+    "build-node": "babel --out-dir ./lib ./src",
+    "build-browser": "babel --out-dir ./dist --modules umdStrict ./src",
+    "build": "npm run build-node && npm run build-browser",
+    "prepublish": "npm run build && npm run check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gozala/value-result.git",
+    "web": "https://github.com/Gozala/value-result"
+  },
+  "bugs": {
+    "url": "http://github.com/Gozala/value-result/issues/"
+  },
+  "license": "MPL-2.0"
+}

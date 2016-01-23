@@ -1,0 +1,10 @@
+{
+    "sourceMaps": "inline",
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "syntax-flow",
+      "flow-comments"
+    ]
+  }
