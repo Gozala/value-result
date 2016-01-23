@@ -10,16 +10,16 @@ interface ResultInterface <x, a>
   , withDefault(fallback:a): a
   }
 
-type Ok <error, value>
-  = ResultInterface<error, value>
+type Ok <value>
+  = ResultInterface<*, value>
   & { type: "Ok"
     , value: value
     , isError: false
     , isOk: true
     }
 
-type Error <error, value>
-  = ResultInterface<error, value>
+type Error <error>
+  = ResultInterface<error, *>
   & { type: "Error"
     , error: error
     , isError: true
@@ -27,8 +27,8 @@ type Error <error, value>
     }
 
 export type Result <error, value>
-  = Error <error, value>
-  | Ok <error, value>
+  = Error <error>
+  | Ok <value>
 
 declare export function ok <x, a>
   (value:a) :
