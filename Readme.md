@@ -188,8 +188,6 @@ Result.or(two, other) // => Ok(2)
 
 ## Prior art
 
-Library is pretty is inspired by:
-
 - [Result][result-elm] type from [Elm][].
 - [Result][result-rust] type from [Rust][].
 
