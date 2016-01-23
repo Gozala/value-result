@@ -199,8 +199,8 @@ Library is pretty is inspired by:
 [result-rust]:https://doc.rust-lang.org/std/result/index.html
 [result-elm]:http://package.elm-lang.org/packages/elm-lang/core/3.0.0/Result
 
-[npm-url]: https://npmjs.org/package/data-result
-[npm-image]: https://img.shields.io/npm/v/data-result.svg?style=flat
+[npm-url]: https://npmjs.org/package/value-result
+[npm-image]: https://img.shields.io/npm/v/value-result.svg?style=flat
 
-[travis-url]: https://travis-ci.org/Gozala/data-result
-[travis-image]: https://img.shields.io/travis/Gozala/data-result.svg?style=flat
+[travis-url]: https://travis-ci.org/Gozala/value-result
+[travis-image]: https://img.shields.io/travis/Gozala/value-result.svg?style=flat
