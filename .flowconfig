@@ -1,5 +1,4 @@
 [ignore]
-.*/lib/.*
 .*/dist/.*
 
 [libs]
@@ -7,10 +6,6 @@
 [include]
 
 [options]
-module.name_mapper='../.' -> './src/result.js'
-module.name_mapper='../../value-result' -> './src/result.js'
-module.name_mapper='../value-result' -> './src/result.js'
-module.name_mapper='./' -> './src/result.js'
 
 suppress_comment= \\(.\\|\n\\)*\\@FlowIssue
 suppress_comment= \\(.\\|\n\\)*\\@FlowIgnore

@@ -1,7 +1,7 @@
 /* @flow */
 
 import test from "tape"
-import * as Result from "../../value-result"
+import * as Result from ".."
 
 test('ok', test => {
   const result = Result.ok('foo')
