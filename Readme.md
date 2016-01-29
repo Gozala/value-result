@@ -24,6 +24,164 @@ Result
   .map(parseInt) // Error('Bad input')
 ```
 
+#### `map2`
+
+Apply a function to two results, if both results are `Ok`. If not, the first argument which is an `Error` will propagate through.
+
+```js
+Result.map2
+( (x, y) => x + y
+, Result.ok(1)
+, Result.ok(2)
+) // => Ok(3)
+
+Result.map2
+( (x, y) => x + y
+, Result.ok(1)
+, Result.error('NaN')
+) // => Error('NaN')
+
+Result.map2
+( (x, y) => x + y
+, Result.error('Boom')
+, Result.ok(2)
+) // => Error('Boom')
+
+Result.map2
+( (x, y) => x + y
+, Result.error('Boom')
+, Result.error('NaN')
+) // => Error('Boom')
+```
+
+### `map3`
+
+Apply a function to three results, if all results are `Ok`. If not, the first result that is `Error` will propagate through.
+
+
+```js
+Result.map3
+( (a, b, c) => a + b + c
+, Result.ok(1)
+, Result.ok(2)
+, Result.ok(10)
+) // => Ok(13)
+
+Result.map3
+( (a, b, c) => a + b + c
+, Result.ok(1)
+, Result.error('NaN')
+, Result.ok(10)
+) // => Error('NaN')
+
+Result.map3
+( (a, b, c) => a + b + c
+, Result.error('Boom')
+, Result.ok(2)
+, Result.ok(10)
+) // => Error('Boom')
+
+Result.map3
+( (a, b, c) => a + b + c
+, Result.error('Boom')
+, Result.error('NaN')
+, Result.ok(10)
+) // => Error('Boom')
+
+
+Result.map3
+( (a, b, c) => a + b + c
+, Result.ok(2)
+, Result.ok(10)
+, Result.error('Oops')
+) // => Error('Oops')
+```
+
+### `map4`
+
+Apply a function to four results, if all results are `Ok`. If not, the first result that is `Error` will propagate through.
+
+
+```js
+Result.map4
+( (a, b, c, d) => a + b + c + d
+, Result.ok(1)
+, Result.ok(2)
+, Result.ok(10)
+, Result.ok(7)
+) // => Ok(20)
+
+Result.map4
+( (a, b, c, d) => a + b + c + d
+, Result.ok(1)
+, Result.ok(2)
+, Result.error('Oops')
+, Result.ok(7)
+) // => Error('Oops')
+
+Result.map4
+( (a, b, c, d) => a + b + c + d
+, Result.ok(1)
+, Result.ok(2)
+, Result.ok(7)
+, Result.error('Oops')
+) // => Error('Oops')
+
+
+Result.map4
+( (a, b, c, d) => a + b + c + d
+, Result.ok(1)
+, Result.error('Oops')
+, Result.ok(2)
+, Result.error('Boom')
+) // => Error('Oops')
+```
+
+### `map5`
+
+Apply a function to five results, if all results are `Ok`. If not, the first result that is `Error` will propagate through.
+
+
+
+```js
+Result.map5
+( (a, b, c, d, e) => a + b + c + d + e
+, Result.ok(1)
+, Result.ok(2)
+, Result.ok(10)
+, Result.ok(7)
+, Result.ok(3)
+) // => Ok(23)
+
+Result.map5
+( (a, b, c, d, e) => a + b + c + d + e
+, Result.ok(1)
+, Result.ok(2)
+, Result.error('Oops')
+, Result.ok(7)
+, Result.ok(3)
+) // => Error('Oops')
+
+Result.map5
+( (a, b, c, d, e) => a + b + c + d + e
+, Result.ok(1)
+, Result.ok(2)
+, Result.ok(7)
+, Result.ok(3)
+, Result.error('Oops')
+) // => Error('Oops')
+
+
+Result.map5
+( (a, b, c, d, e) => a + b + c + d + e
+, Result.ok(1)
+, Result.error('Oops')
+, Result.ok(2)
+, Result.error('Boom')
+, Result.ok(7)
+) // => Error('Oops')
+```
+
 ## Chaining
 
 #### `chain`

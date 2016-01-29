@@ -66,6 +66,202 @@ test('map', test => {
   test.end()
 })
 
+test('map2', test => {
+  test.isEquivalent
+  ( Result.map2
+    ( (x, y) => x + y
+    , Result.ok(1)
+    , Result.ok(2)
+    )
+  , Result.ok(3)
+  )
+
+  test.isEquivalent
+  ( Result.map2
+    ( (x, y) => x + y
+    , Result.ok(1)
+    , Result.error('NaN')
+    )
+  , Result.error('NaN')
+  )
+
+  test.isEquivalent
+  ( Result.map2
+    ( (x, y) => x + y
+    , Result.error('Boom')
+    , Result.ok(2)
+    )
+  , Result.error('Boom')
+  )
+
+  test.isEquivalent
+  ( Result.map2
+    ( (x, y) => x + y
+    , Result.error('Boom')
+    , Result.error('NaN')
+    )
+  , Result.error('Boom')
+  )
+
+  test.end()
+})
+
+test('map3', test => {
+  test.isEquivalent
+  ( Result.map3
+    ( (a, b, c) => a + b + c
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.ok(10)
+    )
+  , Result.ok(13)
+  )
+
+  test.isEquivalent
+  ( Result.map3
+    ( (a, b, c) => a + b + c
+    , Result.ok(1)
+    , Result.error('NaN')
+    , Result.ok(10)
+    )
+  , Result.error('NaN')
+  )
+
+  test.isEquivalent
+  ( Result.map3
+  ( (a, b, c) => a + b + c
+    , Result.error('Boom')
+    , Result.ok(2)
+    , Result.ok(10)
+    )
+  , Result.error('Boom')
+  )
+
+  test.isEquivalent
+  ( Result.map3
+    ( (a, b, c) => a + b + c
+    , Result.error('Boom')
+    , Result.error('NaN')
+    , Result.ok(10)
+    )
+  , Result.error('Boom')
+  )
+
+  test.isEquivalent
+  ( Result.map3
+    ( (a, b, c) => a + b + c
+    , Result.ok(2)
+    , Result.ok(10)
+    , Result.error('Oops')
+    )
+  , Result.error('Oops')
+  )
+
+  test.end()
+})
+
+test("map4", test => {
+  test.isEquivalent
+  ( Result.map4
+    ( (a, b, c, d) => a + b + c + d
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.ok(10)
+    , Result.ok(7)
+    )
+  , Result.ok(20)
+  )
+
+  test.isEquivalent
+  ( Result.map4
+    ( (a, b, c, d) => a + b + c + d
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.error('Oops')
+    , Result.ok(7)
+    )
+  , Result.error('Oops')
+  )
+
+  test.isEquivalent
+  ( Result.map4
+    ( (a, b, c, d) => a + b + c + d
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.ok(7)
+    , Result.error('Oops')
+    )
+  , Result.error('Oops')
+  )
+
+
+  test.isEquivalent
+  ( Result.map4
+    ( (a, b, c, d) => a + b + c + d
+    , Result.ok(1)
+    , Result.error('Oops')
+    , Result.ok(2)
+    , Result.error('Boom')
+    )
+  , Result.error('Oops')
+  )
+
+  test.end()
+})
+
+test("map5", test => {
+
+  test.isEquivalent
+  ( Result.map5
+    ( (a, b, c, d, e) => a + b + c + d + e
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.ok(10)
+    , Result.ok(7)
+    , Result.ok(3)
+    )
+  , Result.ok(23)
+  )
+
+  test.isEquivalent
+  ( Result.map5
+    ( (a, b, c, d, e) => a + b + c + d + e
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.error('Oops')
+    , Result.ok(7)
+    , Result.ok(3)
+    )
+  , Result.error('Oops')
+  )
+
+  test.isEquivalent
+  ( Result.map5
+    ( (a, b, c, d, e) => a + b + c + d + e
+    , Result.ok(1)
+    , Result.ok(2)
+    , Result.ok(7)
+    , Result.ok(3)
+    , Result.error('Oops')
+    )
+  , Result.error('Oops')
+  )
+
+  test.isEquivalent
+  ( Result.map5
+    ( (a, b, c, d, e) => a + b + c + d + e
+    , Result.ok(1)
+    , Result.error('Oops')
+    , Result.ok(2)
+    , Result.error('Boom')
+    , Result.ok(7)
+    )
+  , Result.error('Oops')
+  )
+
+  test.end()
+})
+
 const toInt = text => {
   const int = parseInt(text, 10)
   const result =
