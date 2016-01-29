@@ -1,7 +1,7 @@
 {
   "name": "value-result",
   "id": "value-result",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for managing results of computation that may fail",
   "keywords": [
     "result",
